@@ -1,0 +1,39 @@
+---
+- hosts: strapi
+  become: true
+  become_method: sudo
+  remote_user: devops
+  vars_files:
+    - ../crypt_vars/strapi.yml
+    - ../crypt_vars/database.yml
+    - ../tf_vars/tf_vars.yml
+
+  roles:
+    - role: nodejs
+    - role: yarn
+    - role: acme_sh
+    - role: nginx
+
+  tasks:
+    - name: Create Strapi app directory for deploy user
+      file:
+        path: "{{ application_dir }}"
+        state: directory
+        owner: deploy
+        group: deploy
+        mode: 0775
+    - name: Create app shared directory
+      file:
+        path: "{{ application_dir}}/shared"
+        state: directory
+        owner: deploy
+        group: deploy
+        mode: 0775
+    - name: Install pm2 globally
+      npm: name=pm2 global=yes production=yes
+    - name: Setup pm2 startup (systemd)
+      shell: "env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u deploy --hp /home/deploy"
+      become: true
+      become_user: root
+
+- import_playbook: strapi_dply.yml

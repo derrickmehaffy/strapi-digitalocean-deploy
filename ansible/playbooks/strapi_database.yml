@@ -1,0 +1,14 @@
+---
+- hosts: database
+  become: true
+  become_method: sudo
+  remote_user: devops
+  vars_files:
+    - ../crypt_vars/database.yml
+    - ../tf_vars/tf_vars.yml
+
+  roles:
+    - role: mysql
+      become: yes
+
+- import_playbook: strapi_server.yml

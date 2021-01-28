@@ -1,0 +1,30 @@
+# Terraform
+*~
+account.json
+*.tfstate.backup
+*.retry
+*.swp
+vault
+vault_password
+.terraform
+.DS_Store
+plan.txt
+*.tfstate
+*.tfstate.lock.info
+*.lock.hcl
+terraform/*.tfvars
+!terraform/example.tfvars
+
+# Ansible
+ansible/crypt_vars/*
+!ansible/crypt_vars/example
+!ansible/crypt_vars/example/*
+ansible/vault_password
+ansible/inventory
+ansible/roles/*
+!ansible/roles/.gitkeep
+ansible/tf_vars/*
+!ansible/tf_vars/.gitkeep
+ansible/ssh_keys/*
+!ansible/ssh_keys/example_*.pub
+

@@ -1,0 +1,6 @@
+- name: Run Strapi service
+  command: "pm2 startOrReload {{ application_dir }}/{{ ansistrano_current_dir }}/ecosystem.config.js -i max"
+  environment:
+    NODE_ENV: production
+- name: Save running pm2 services
+  command: "pm2 save"

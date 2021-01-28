@@ -1,0 +1,12 @@
+module.exports = {
+  apps: [
+    {
+      name: 'prod_{{ application_name }}',
+      script: 'npm',
+      args: 'start',
+      watch: false,
+      merge_logs: true,
+      "cwd": "{{ application_dir }}/current"
+    },
+  ],
+};

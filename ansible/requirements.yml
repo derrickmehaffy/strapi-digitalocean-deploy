@@ -1,0 +1,43 @@
+---
+# Ansible Galaxy roles
+roles:
+  # https://galaxy.ansible.com/nickjj/acme_sh
+  # Used to handle HTTPS Certs
+  - src: nickjj.acme_sh
+    name: acme_sh
+
+  # Used for deploying projects
+  - src: ansistrano.deploy
+    name: deploy
+  - src: ansistrano.rollback
+    name: rollback
+
+  # https://galaxy.ansible.com/weareinteractive/apt
+  # Used to manage apt packages
+  - src: weareinteractive.apt
+    name: apt
+
+  # https://galaxy.ansible.com/ryandaniels/create_users
+  # Used for user management
+  - src: ryandaniels.create_users
+    name: users
+
+  # https://github.com/angristan/ansible-nodejs
+  # Used to install Nodejs
+  - src: https://github.com/angristan/ansible-nodejs
+    name: nodejs
+
+  # https://github.com/angristan/ansible-yarn
+  # Used to install Nodejs
+  - src: https://github.com/angristan/ansible-yarn
+    name: yarn
+
+  # https://galaxy.ansible.com/geerlingguy/mysql
+  # Used to install and manage MariaDB
+  - src: geerlingguy.mysql
+    name: mysql
+
+  # https://galaxy.ansible.com/geerlingguy/nginx
+  # Used to install and manage nginx
+  - src: geerlingguy.nginx
+    name: nginx
